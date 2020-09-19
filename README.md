@@ -1,6 +1,6 @@
 1. What is the project?
 
-This is our first collaborative milestone project for STAT 545A. We will be running a .rmd file using Rstudio.
+This is our first collaborative milestone project for STAT 545A. We will be running a .rmd file using Rstudio. We will also learn to make a pull request.
 
 2. What files are in the project folder / GitHub repository?
 
