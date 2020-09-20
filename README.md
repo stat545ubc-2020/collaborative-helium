@@ -1,29 +1,4 @@
- Project1
-Project1
-1. What is the project?
 
-This project is a collaborative Milestone project for STAT 545. Part of this project is to make a pull request
-
-2. What files are in the project folder / GitHub repository?
-
-3. How can they run code that appears in your folder / GitHub repository?
-=======
-Push
-1. What is the project?
-
-This is our first collaborative milestone project for STAT 545A. We will be running a .rmd file using Rstudio. We will also learn to make a pull request.
-
-2. What files are in the project folder / GitHub repository?
-
-The files in the repository of this project are: 
-Milestone1 (folder
-Teamwork.md
-README.md
-.gitignore
-
-3. How can they run code that appears in your folder / GitHub repository?
-
-We can run the code using Rstudio.
  master
 =======
 # Collaborative milestone 1 Project
@@ -35,6 +10,7 @@ _Rudri Bhatt_
 1. What is the project?
 
 This is our first collaborative milestone project for STAT 545A. We will be running a .rmd file using Rstudio.
+Each team member made a Pull request on GitHUb and the other teammember commented on and merged the pull request. Rudri made the pull request on README.md file in branch Push, while Tomiyosi made the pull request on Teamwork.md in branch Project1.
 
 2. What files are in the project folder / GitHub repository?
 
@@ -68,3 +44,32 @@ Our Team members said:
 > How do we merge a pull request?
 > Oh wait, I got it!
 master
+
+This is Branch Project1
+
+Project1
+1. What is the project?
+
+This project is a collaborative Milestone project for STAT 545. Part of this project is to make a pull request
+
+2. What files are in the project folder / GitHub repository?
+
+3. How can they run code that appears in your folder / GitHub repository?
+=======
+This is branch Push
+Push
+1. What is the project?
+
+This is our first collaborative milestone project for STAT 545A. We will be running a .rmd file using Rstudio. We will also learn to make a pull request.
+
+2. What files are in the project folder / GitHub repository?
+
+The files in the repository of this project are: 
+Milestone1 (folder
+Teamwork.md
+README.md
+.gitignore
+
+3. How can they run code that appears in your folder / GitHub repository?
+
+We can run the code using Rstudio.
