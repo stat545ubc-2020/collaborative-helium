@@ -1,3 +1,20 @@
+Push
+1. What is the project?
+
+This is our first collaborative milestone project for STAT 545A. We will be running a .rmd file using Rstudio. We will also learn to make a pull request.
+
+2. What files are in the project folder / GitHub repository?
+
+The files in the repository of this project are: 
+Milestone1 (folder
+Teamwork.md
+README.md
+.gitignore
+
+3. How can they run code that appears in your folder / GitHub repository?
+
+We can run the code using Rstudio.
+=======
 # Collaborative milestone 1 Project
 
 __Team members:__
@@ -39,3 +56,4 @@ The tasks under this project are:
 Our Team members said:
 > How do we merge a pull request?
 > Oh wait, I got it!
+master
