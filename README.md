@@ -1,3 +1,13 @@
+ Project1
+Project1
+1. What is the project?
+
+This project is a collaborative Milestone project for STAT 545. Part of this project is to make a pull request
+
+2. What files are in the project folder / GitHub repository?
+
+3. How can they run code that appears in your folder / GitHub repository?
+=======
 Push
 1. What is the project?
 
@@ -14,6 +24,7 @@ README.md
 3. How can they run code that appears in your folder / GitHub repository?
 
 We can run the code using Rstudio.
+ master
 =======
 # Collaborative milestone 1 Project
 
