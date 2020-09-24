@@ -133,6 +133,17 @@ filter(movieLens, title %in% "Little Women")
 filter(movieLens, rating > 4.5, year < 1995)
 ```
 
+After
+```{r}
+filter(movieLens, genres == "Drama")
+filter(movieLens, !genres == "Drama")
+filter(movieLens, year > 2000)
+filter(movieLens, rating >= 4.5)
+filter(movieLens, year == 1999 | year == 2000)
+filter(movieLens, title == "Little Women")
+filter(movieLens, rating > 4.5, year < 1995)
+```
+
 ### Exercise 3
 
 While filtering for *all movies that do not belong to the genre drama* above, I noticed something interesting. I want to filter for the same thing again, this time selecting variables **title and genres first,** and then *everything else*. Hint: there is a function to select "everything else"...
@@ -142,6 +153,14 @@ While filtering for *all movies that do not belong to the genre drama* above, I 
 movieLens %>%
   filter(!genres == "Drama") %>%
   select(title, genres, year, rating, timestamp)
+```
+
+After
+```{r}
+### ERROR HERE ###
+movieLens %>%
+  filter(!genres == "Drama") %>%
+  select(title, genres, year, everything())
 ```
 
 Notice that some movies appear to have several genres, instead of a single one. If we filter for the movie "Dumbo" and select the genres column, we see that "Animation|Children|Drama|Musical" appear as genres.
