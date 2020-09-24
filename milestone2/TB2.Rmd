@@ -3,6 +3,12 @@ title: "Team Troubleshooting Deliverable 2"
 output: github_document
 ---
 
+install.packages(c('tidyverse','devtools','dslabs','gapminder'))
+devtools::install_github("JoeyBernhardt/singer")
+
+library(dplyr)
+packageVersion('dplyr')
+
 ```{r include = FALSE}
 knitr::opts_chunk$set(error = TRUE)
 ```
@@ -37,7 +43,7 @@ Exercise A: In the following chunk, I would like to select all columns of the mt
 ```{r}
 ### ERROR HERE ###
 mtcars %>%
-  select(disp:vs) %>%
+  select(disp:wt) %>%
   filter(hp >= 100)
 ```
 
@@ -61,12 +67,23 @@ There are 24 code chunks in this Rmd with errors. Will you be the one to find th
   
 ```{r}
 ### ERROR HERE ###
-libraries(dslabs)
-libraries(singer)
-libraries(tidyverse)
-libraries(stringr)
-libraries(gapminder)
+library(dslabs)
+library(singer)
+library(tidyverse)
+library(stringr)
+library(gapminder)
+install.packages(tidyverse)
 ```
+```{r}
+install.packages(c('tidyverse', 'dslabs', 'gapminder', 'singer'))
+install.packages(stringer)
+library(dslabs)
+library(singer)
+library(tidyverse)
+library(gapminder)
+library(stringr)
+```
+
 
 [MovieLens](https://dl.acm.org/doi/10.1145/2827872) are a series of datasets widely used in education, that describe movie ratings from the MovieLens [website](https://movielens.org/). There are several MovieLens datasets, collected by the [GroupLens Research Project](https://grouplens.org/datasets/movielens/) at the University of Minnesota. Here, we load the MovieLens 100K dataset from Rafael Irizarry and Amy Gill's R package, [DSLabs](https://cran.r-project.org/web/packages/dslabs/dslabs.pdf), which contains datasets useful for data analysis practice, homework, and projects in data science courses and workshops. 
 
@@ -78,11 +95,20 @@ Let's have a look at the dataset! My goal is to:
 + If it isn't a tibble already, coerce it into a tibble and store it in the variable "movieLens".
 + Have a quick look at the rows and columns, using a *dplyr function*.
 
+Before
+```{r}
+### ERROR HERE ###
+#class(dslabs::movielens)
+#movieLens <- as_tibble(dslabs::movielens)
+#dim(movieLens)
+```
+
+After
 ```{r}
 ### ERROR HERE ###
 class(dslabs::movielens)
 movieLens <- as_tibble(dslabs::movielens)
-dim(movieLens)
+dim(dslabs::movielens)
 ```
 
 ### Exercise 2
