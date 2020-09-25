@@ -128,8 +128,8 @@ filter(movieLens, genres == "Drama")
 filter(movieLens, !genres == "Drama")
 filter(movieLens, year >= 2000)
 filter(movieLens, rating < 4.5)
-filter(movieLens, year == 1999 | month == 2000)
-filter(movieLens, title %in% "Little Women")
+filter(movieLens, year == 1999 |year == 2000)
+filter(movieLens, title == "Little Women")
 filter(movieLens, rating > 4.5, year < 1995)
 ```
 
