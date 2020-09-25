@@ -106,9 +106,9 @@ Before
 After
 ```{r}
 ### ERROR HERE ###
-class(dslabs::movielens)
-movieLens <- as_tibble(dslabs::movielens)
-dim(dslabs::movielens)
+class(movielens)
+movieLens <- as_tibble(movielens)
+dim(movieLens)
 ```
 
 ### Exercise 2
@@ -133,16 +133,19 @@ filter(movieLens, title %in% "Little Women")
 filter(movieLens, rating > 4.5, year < 1995)
 ```
 
+
+
 ### Exercise 3
 
 While filtering for *all movies that do not belong to the genre drama* above, I noticed something interesting. I want to filter for the same thing again, this time selecting variables **title and genres first,** and then *everything else*. Hint: there is a function to select "everything else"...
 
 ```{r}
 ### ERROR HERE ###
-movieLens %>%
-  filter(!genres == "Drama") %>%
-  select(title, genres, year, rating, timestamp)
+#movieLens %>%
+#  filter(!genres == "Drama") %>%
+#  select(title, genres, year, rating, timestamp)
 ```
+
 
 Notice that some movies appear to have several genres, instead of a single one. If we filter for the movie "Dumbo" and select the genres column, we see that "Animation|Children|Drama|Musical" appear as genres.
 
