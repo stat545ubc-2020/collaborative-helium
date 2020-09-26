@@ -280,9 +280,9 @@ movieLens %>%
 + Using `summarize()`, find the minimum and the maximum rating by title, and store these new variables under `min_rating`, and `max_rating`, respectively. 
 
 ```{r}
-### ERROR HERE ###
 movieLens %>%
-  mutate(min_rating = min(rating), max_rating = max(rating))
+  group_by(title)%>%
+  summarize(min_rating = min(rating), max_rating = max(rating))
 ```
 
 + Using `group_by()` and `summarize()`, find the number of reviews per movie title, and arrange in order of descending number of reviews. Notice that we achieved the same result in the previous exercise using `tally()`.
@@ -290,8 +290,8 @@ movieLens %>%
 ```{r}
 movieLens %>%
 	group_by(title) %>%
-	summarise(n_reviews = "n()") %>%
-	arrange(n_reviews)
+	summarise(n_reviews = n()) %>%
+	arrange(desc(n_reviews))
 ```
 
 ### Exercise 8
