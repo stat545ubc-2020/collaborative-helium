@@ -218,8 +218,8 @@ Instead of filtering to a specific year, group the movies by year, and then arra
 ```{r}
 movieLens %>%
   group_by(year) %>%
-  arrange(rating) %>%
-  select(year:rating)
+  arrange(rating, .by_group = TRUE) %>%
+  select(year, title, rating)
 ```
 
 ### Exercise 6
