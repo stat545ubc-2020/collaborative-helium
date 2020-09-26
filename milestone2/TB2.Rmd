@@ -310,6 +310,13 @@ starWars %>%
   summarise(across(where(num), mean))
 ```
 
+After
+```{r}
+starWars %>%
+  drop_na() %>%
+  summarise(across((where(num), mean)))
+```
+
 + Find the minimum height and weight within each species.
 
 ```{r}
@@ -320,6 +327,15 @@ starWars %>%
   drop_na()
 ```
 
+After 
+```{r}
+starWars %>%
+  drop_na()%>%
+  group_by(species) %>%
+  summarise(across(height, min)) 
+  
+```
+
 + Find the number of distinct names and homeworlds by each species.
 
 ```{r}
@@ -328,6 +344,14 @@ starWars %>%
   species %>%
   filter(n() > 0) %>%
   summarise(across(c(name, homeworld), n_distinct))
+```
+
+After
+```{r}
+starWars %>%
+  select(species) %>%
+  filter(n() > 0) %>%
+  count(c(name, homeworld))
 ```
 
 ### Exercise 9
