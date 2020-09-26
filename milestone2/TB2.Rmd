@@ -254,7 +254,7 @@ Not only do `count()` and `tally()` quickly allow you to count items within your
 
 ```{r}
 movieLens %>%
-add_count(title, name = 'n') %>%
+  add_count(title, name = 'n') %>%
 filter(n <= 5) %>%
 mutate(n_reviews = n)
 ```
