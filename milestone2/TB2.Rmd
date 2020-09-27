@@ -304,54 +304,30 @@ starWars <- as_tibble(starwars)
 
 + Find the mean for all columns that are numeric.
 
-```{r}
-starWars %>%
-  drop_na() %>%
-  summarise(across(where(num), mean))
-```
 
-After
 ```{r}
 starWars %>%
   drop_na() %>%
-  summarise(across((where(num), mean)))
+  summarise(across(where(is.numeric), mean))
 ```
 
 + Find the minimum height and weight within each species.
 
 ```{r}
-### ERROR HERE ###
 starWars %>%
   group_by(species) %>%
-  summarise(across("height", "weight", min)) %>%
+  summarise(height = min(height), weight = min(mass*9.8)) %>%
   drop_na()
-```
-
-After 
-```{r}
-starWars %>%
-  drop_na()%>%
-  group_by(species) %>%
-  summarise(across(height, min)) 
-  
 ```
 
 + Find the number of distinct names and homeworlds by each species.
 
 ```{r}
-### ERROR HERE ###
 starWars %>%
-  species %>%
+  group_by(species) %>%
   filter(n() > 0) %>%
   summarise(across(c(name, homeworld), n_distinct))
-```
-
-After
-```{r}
-starWars %>%
-  select(species) %>%
-  filter(n() > 0) %>%
-  count(c(name, homeworld))
+  #drop_na()
 ```
 
 ### Exercise 9
