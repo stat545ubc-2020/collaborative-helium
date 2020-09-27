@@ -5,7 +5,9 @@ output: github_document
 
 install.packages(c('tidyverse','devtools','dslabs','gapminder'))
 devtools::install_github("JoeyBernhardt/singer")
-
+library(singer)
+install.packages('tidyverse')
+install.packages('singer')
 library(dplyr)
 packageVersion('dplyr')
 
@@ -338,33 +340,29 @@ The `singer` package was created by Joey Bernhardt, and it contains 3 datasets t
 
 ```{r include = FALSE}
 songs <- singer::songs
-locations <- singer::locations 
+locations <- singer::locations
 ```
 
 ```{r}
-### ERROR HERE ###
-anti_join(songs, locations)
+inner_join(songs, locations)
 ```
 
 + Join `songs` and `locations` in a way that drops all observations from `songs` that *do not* have a match in `locations`.
 
 ```{r}
-### ERROR HERE ###
-inner_join(songs, locations)
+right_join(songs, locations, by = 'title')
 ```
 
 + Combine `locations` and `songs` to find only the entries that correspond to song titles in the `locations` dataset.
 
 ```{r}
-### ERROR HERE ###
-left_join(songs, locations)
+left_join(locations, songs)
 ```
 
 + Merge `songs` and `locations` so that *all information* from both datasets is combined.
 
 ```{r}
-### ERROR HERE ###
-semi_join(songs, locations)
+full_join(songs, locations)
 ```
 
 ### Exercise 10
@@ -377,10 +375,10 @@ Time for reviewing... and tibbles!
 
 ```{r}
 fakeStarWars <-
-tibble(birth_year == "1998:2005",
-       name == starWars$name[,1:8],
-       birth_weight == (birth_year - 1995) * 0.45,
-       birth_location == sample(locations$city, size = 8))
+tibble(birth_year = 1998:2005,
+       name = starWars$name[1:8],
+       birth_weight = (birth_year - 1995) * 0.45,
+       birth_location = sample(locations$city, size = 8))
 ```
 
 Let's look at this new tibble.
@@ -392,17 +390,16 @@ fakeStarWars
 + Without assigning it to any variables, define the same tibble row-by-row with `tribble()`, with the columns in the following order: `name`, `birth_weight`, `birth_year`, `birth_location`.
 
 ```{r}
-### ERROR HERE ###
 tribble(
-  ~name,            ~birth_year,  ~birth_weight, ~location
-  "Luke Skywalker",  1.35      ,   1998        ,  Liverpool, England,
-  "C-3PO"         ,  1.80      ,   1999        ,  Liverpool, England,
-  "R2-D2"         ,  2.25      ,   2000        ,  Seattle, WA,
-  "Darth Vader"   ,  2,70      ,   2001        ,  Liverpool, England,
-  "Leia Organa"   ,  3.15      ,   2002        ,  New York, NY,
-  "Owen Lars"     ,  3.60      ,   2003        ,  Seattle, WA,
-  "Beru Whitesun Iars", 4.05   ,   2004        ,  Liverpool, England,
-  "R5-D4"         ,  4.50      ,   2005        ,  New York, NY
+  ~name,            ~birth_year,  ~birth_weight, ~location,
+  "Luke Skywalker",  1.35      ,   1998        ,  "Liverpool, England",
+  "C-3PO"         ,  1.80      ,   1999        ,  "Liverpool, England",
+  "R2-D2"         ,  2.25      ,   2000        ,  "Seattle, WA",
+  "Darth Vader"   ,  2.70      ,   2001        ,  "Liverpool, England",
+  "Leia Organa"   ,  3.15      ,   2002        ,  "New York, NY",
+  "Owen Lars"     ,  3.60      ,   2003        ,  "Seattle, WA",
+  "Beru Whitesun Iars", 4.05   ,   2004        ,  "Liverpool, England",
+  "R5-D4"         ,  4.50      ,   2005        ,  "New York, NY",
 )
 ```
 
@@ -426,15 +423,15 @@ gapminder_almost <- gapminder %>% filter(continent == "Europe") %>% distinct(yea
 ```{r} 
 ### ERROR HERE ###
 fakeStarWars %>%
-  select(name, starts_with(birth)) %>%
-  rename(year == birth_year) %>%
-  left_join(gapminder_almost, by = "year") %>%
-  select(-c(country, continent, pop:gdpPercap)) %>%
+  select(name, birth_year,birth_weight,birth_location) %>%
+  rename(year = birth_year) %>%
+  left_join(gapminder_almost, by = 'year') %>%
+  select(-c(country, continent, population, gdp)) %>%
   add_count(birth_location, name = "n_location") %>%
-  filter(!n_location > 4) %>%
+  filter(n_location < 4) %>%
   arrange(desc(birth_weight)) %>%
   drop_na() %>%
-  inner_join("starwars") %>%
+  left_join(starwars) %>%
   mutate(bmi = mass / height / 100 ^ 2)
 ```
 
