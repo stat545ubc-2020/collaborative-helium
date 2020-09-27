@@ -280,9 +280,9 @@ movieLens %>%
 + Using `summarize()`, find the minimum and the maximum rating by title, and store these new variables under `min_rating`, and `max_rating`, respectively. 
 
 ```{r}
-### ERROR HERE ###
 movieLens %>%
-  mutate(min_rating = min(rating), max_rating = max(rating))
+  group_by(title)%>%
+  summarize(min_rating = min(rating), max_rating = max(rating))
 ```
 
 + Using `group_by()` and `summarize()`, find the number of reviews per movie title, and arrange in order of descending number of reviews. Notice that we achieved the same result in the previous exercise using `tally()`.
@@ -290,8 +290,8 @@ movieLens %>%
 ```{r}
 movieLens %>%
 	group_by(title) %>%
-	summarise(n_reviews = "n()") %>%
-	arrange(n_reviews)
+	summarise(n_reviews = n()) %>%
+	arrange(desc(n_reviews))
 ```
 
 ### Exercise 8
@@ -304,30 +304,30 @@ starWars <- as_tibble(starwars)
 
 + Find the mean for all columns that are numeric.
 
+
 ```{r}
 starWars %>%
   drop_na() %>%
-  summarise(across(where(num), mean))
+  summarise(across(where(is.numeric), mean))
 ```
 
 + Find the minimum height and weight within each species.
 
 ```{r}
-### ERROR HERE ###
 starWars %>%
   group_by(species) %>%
-  summarise(across("height", "weight", min)) %>%
+  summarise(height = min(height), weight = min(mass*9.8)) %>%
   drop_na()
 ```
 
 + Find the number of distinct names and homeworlds by each species.
 
 ```{r}
-### ERROR HERE ###
 starWars %>%
-  species %>%
+  group_by(species) %>%
   filter(n() > 0) %>%
   summarise(across(c(name, homeworld), n_distinct))
+  #drop_na()
 ```
 
 ### Exercise 9
