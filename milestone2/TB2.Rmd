@@ -421,7 +421,6 @@ gapminder_almost <- gapminder %>% filter(continent == "Europe") %>% distinct(yea
 + Calculate BMI (body mass index) by dividing weight (`mass`) by squared `height` *in meters*. Store it in a column with the name `bmi`.
 
 ```{r} 
-### ERROR HERE ###
 fakeStarWars %>%
   select(name, birth_year,birth_weight,birth_location) %>%
   rename(year = birth_year) %>%
