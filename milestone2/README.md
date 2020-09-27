@@ -114,10 +114,17 @@ As specified on our course [website](https://stat545.stat.ubc.ca/collaborative-a
 - Pull requests: 15 points
     - *Option A:* Students create an issue and pick which 5 pull requests are to be marked at 3 points each (3 x 5 = 15pts)
         - 1.5 for creating the pull requests and implementing the fix
+ milestone2_README_update
+        - 1.5 for holding the discussion, explaining the fix, and merging the pull request
+    - *Option B:* Students can create an issue and indicate that all 10 pull requests are to be marked, at 1.5 pts each (1.5 x 10 = 15pts)
+        - 0.75 for creating the pull request, proposing the fix, being descriptive, etc. 
+        - 0.75 for holding the discussion, explaining the fix, etc.
+=======
         - 1.5 for holding the discussion, explaining the fix, merging the pull request
     - *Option B:* Students can create an issue and indicate that all 10 pull requests are to be marked, at 1.5 pts each (1.5 x 10 = 15pts)
         - 0.75 for creating the pull request, proposing the fix, being descriptive, etc. 
         - 0.75 for holding the discussion, explaining the fix, merging the pull request
+ master
         - For Exercise 9, we are _still_ looking for a pull request
             - in this case, we are looking for _an attempt_ to fix AND explain these errors, not for correctness
 
