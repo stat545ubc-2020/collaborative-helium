@@ -62,11 +62,25 @@ Remember the `penguins` dataset? I want to explore the relationship between `fli
 
 Remember that there can only be **one error** in a single code chunk.
 
+Before
+
 ```{r 2.0-error2}
 # ERROR HERE - 2
 ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
   geom_smooth() +
   geom_point(method = "lm", se = TRUE) +
+  theme_minimal() +
+  labs(x = "Flipper Length (mm)",
+       y = "Body Mass (g)")
+```
+
+After
+
+```{r 2.0-error2}
+# ERROR 2 fixed
+ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = TRUE) +
   theme_minimal() +
   labs(x = "Flipper Length (mm)",
        y = "Body Mass (g)")
