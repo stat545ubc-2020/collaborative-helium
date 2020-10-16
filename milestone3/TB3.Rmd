@@ -125,10 +125,20 @@ mdy(rs)
 
 Being able to parse dates is nice, but `lubridate` is also very useful when it comes to answering questions such as "How many seconds are in a day?" or "How long has it been since...?". For example, I want to calculate how many *hours* it has been since the first landing on the moon, until today.
 
+Before
+
 ```{r 4.0-error4}
 # ERROR HERE - 4
 date_landing <- mdy("July 20, 1969")
 difftime(today(), date_landing, units = "days")
+```
+
+After
+
+```{r 4.0-error4}
+# ERROR HERE - 4
+date_landing <- mdy("July 20, 1969")
+difftime(today(), date_landing, units = "hours")
 ```
 
 ### Exercise 5
