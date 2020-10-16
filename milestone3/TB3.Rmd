@@ -49,10 +49,20 @@ Remember that you should **always look at the output of your code** to make sure
 
 Also remember that names that contain non-standard characters, like dashes `-`, can be worked with by surrounding the name with backticks.
 
+Before
+
+```{r 1.1-error1}
+# ERROR HERE - 1
+(smoker_tidy <- smoker %>%
+  pivot_longer(c(yes, no), names_to = "gender", values_to = "count"))
+```
+
+After
+
 ```{r 1.1-error1}
 ## Error 1 fixed
 (smoker_tidy <- smoker %>%
-  pivot_longer(c(male, female), names_to = "gender", values_to = "count"))
+  pivot_longer(c(male, female, `non-binary`), names_to = "gender", values_to = "count"))
 smoker_tidy
 ```
 
@@ -60,7 +70,7 @@ smoker_tidy
 
 Remember the `penguins` dataset? I want to explore the relationship between `flipper_length_mm` and `body_mass_g` to see if there is a linear relationship between the two. To do so, I will use `ggplot2` to plot my data as a scatterplot where `x = flipper_length_mm` and `y = body_mass_g`, and I will **add a regression line (straight line) showing the confidence interval** using `geom_smooth()`. 
 
-Remember that there can only be **one error** in a single code chunk.
+Remdoneember that there can only be **one error** in a single code chunk.
 
 Before
 
