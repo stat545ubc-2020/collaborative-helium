@@ -106,10 +106,19 @@ ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
 
 With that said - time to work with some dates! I have stored Rosalind Franklin's birth date under the variable `rs`, and I would like to parse it using **the appropriate `lubridate` date function**, given the order in which I have stored it.
 
+Before
+
 ```{r 3.1-error3}
 # ERROR HERE - 3
 rs <- "July 25, 1920"
 dym(rs) 
+```
+
+After
+```{r 3.1-error3}
+# ERROR 3 fixed
+rs <- "July 25, 1920"
+mdy(rs)
 ```
 
 ### Exercise 4
