@@ -50,9 +50,9 @@ Remember that you should **always look at the output of your code** to make sure
 Also remember that names that contain non-standard characters, like dashes `-`, can be worked with by surrounding the name with backticks.
 
 ```{r 1.1-error1}
-# ERROR HERE - 1
 (smoker_tidy <- smoker %>%
-  pivot_longer(c(yes, no), names_to = "gender", values_to = "count"))
+  pivot_longer(c(male, female), names_to = "gender", values_to = "count"))
+smoker_tidy
 ```
 
 ### Exercise 2
