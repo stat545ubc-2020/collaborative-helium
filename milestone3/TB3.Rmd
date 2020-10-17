@@ -145,11 +145,19 @@ difftime(today(), date_landing, units = "hours")
 
 Now, how many *days* will it have been since the landing on the moon, **in a week from now**?
 
+Before
+
 ```{r 5.0-error5}
 # ERROR HERE - 5
 difftime(today(), date_landing + weeks(1), units = "days")
 ```
 
+After
+```{r 5.0-error5}
+# ERROR 5 FIXED
+date_landing <- mdy("July 20, 1969")
+difftime(today(), date_landing + weeks(1), units = "days")
+```
 ### Exercise 6
 
 The `palmerpenguins` dataset contains a tidy version of the dataset, `penguins`, and an untidy version, `penguins_raw`. Now... remember factors? In the words of Jenny Bryan, "factors are the variable type that useRs love to hate." It is how we store truly categorical information in R; the values in a factor are called "levels". They are particularly useful when it comes to plotting data, and fitting models. Which is why you should know how to use them! `forcats` is the `tidyverse` package that deals with factors.
@@ -190,7 +198,7 @@ levels(penguins_new$Species) # check output
 
 After
 ```{r 6.2-error6}
-# ERROR HERE - 6
+# ERROR 6 FIXED
 penguins_new <-
   penguins_new %>%
   mutate(Species = recode(Species,
@@ -212,12 +220,25 @@ penguins_new <-
 
 Say I want to create a subset of the `penguins_new` dataset, that *only* contains data for **female** penguins from the **Adelie** and **Gentoo** species. Save this subset into `penguins_subset` and ensure that you *drop all unused levels* from this new subset. Remember to *check the output* to ensure that the code is doing what you expect it to do!
 
+Before
+
 ```{r 7.1-error7}
 # ERROR HERE - 7
 penguins_subset <-
   penguins_new %>%
   filter(Species %in% c("Adelie", "Gentoo") & Sex == "FEMALE") %>%
   drop_na() 
+```
+
+After
+
+```{r 7.1-error7}
+# ERROR 7 FIXED
+penguins_subset <-
+  penguins_new %>%
+  filter(Species %in% c("Adelie", "Gentoo") & Sex == "FEMALE") %>%
+  droplevels() 
+penguins_subset
 ```
 
 ### Exercise 8
@@ -254,17 +275,25 @@ right_join(movies, distributors)
 
 After
 ```{r 8.1-error8}
-# ERROR HERE - 8
-left_join(movies, distributors) 
+# ERROR 8 FIXED
+anti_join(movies, distributors) 
 ```
 
 ### Exercise 9
 
 Join `movies` and `distributors` so that all rows from `distributors` and all columns from `movies` and `distributors` are kept.
 
+Before
+
 ```{r 9.0-error9}
 # ERROR HERE - 9
 left_join(movies, distributors)
+```
+
+After
+```{r 9.0-error9}
+# ERROR 9 FIXED
+right_join(movies, distributors)
 ```
 
 ### Exercise 10
@@ -279,7 +308,7 @@ inner_join(movies, distributors)
 
 After
 ```{r 10.0-error10}
-# ERROR HERE - 10
+# ERROR 10 FIXED
 inner_join(movies, distributors)
 ```
 
