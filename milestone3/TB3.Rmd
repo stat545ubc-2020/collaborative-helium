@@ -176,11 +176,24 @@ Now, I noticed that the levels for the factor `Species` could be simplified. The
 + "Chinstrap penguin (Pygoscelis antarctica)" to "Chinstrap"
 + "Gentoo penguin (Pygoscelis papua)" to "Gentoo"
 
+Before
 ```{r 6.2-error6}
 # ERROR HERE - 6
 penguins_new <-
   penguins_new %>%
   mutate(Species = rename(Species,
+                          "Adelie Penguin (Pygoscelis adeliae)" = "Adelie",
+                          "Chinstrap penguin (Pygoscelis antarctica)" = "Chinstrap",
+                          "Gentoo penguin (Pygoscelis papua)" = "Gentoo"))
+levels(penguins_new$Species) # check output
+```
+
+After
+```{r 6.2-error6}
+# ERROR HERE - 6
+penguins_new <-
+  penguins_new %>%
+  mutate(Species = recode(Species,
                           "Adelie Penguin (Pygoscelis adeliae)" = "Adelie",
                           "Chinstrap penguin (Pygoscelis antarctica)" = "Chinstrap",
                           "Gentoo penguin (Pygoscelis papua)" = "Gentoo"))
@@ -233,9 +246,16 @@ distributors <- tibble::tribble(
 
 Join `movie` and `distributor` so that all rows in `movie` where there are no matching values in `distributor` are kept.
 
+Before
 ```{r 8.1-error8}
 # ERROR HERE - 8
 right_join(movies, distributors) 
+```
+
+After
+```{r 8.1-error8}
+# ERROR HERE - 8
+left_join(movies, distributors) 
 ```
 
 ### Exercise 9
@@ -251,6 +271,13 @@ left_join(movies, distributors)
 
 Join `movies` and `distributors` so that all rows and all columns from both datasets are present.
 
+Before
+```{r 10.0-error10}
+# ERROR HERE - 10
+inner_join(movies, distributors)
+```
+
+After
 ```{r 10.0-error10}
 # ERROR HERE - 10
 inner_join(movies, distributors)
