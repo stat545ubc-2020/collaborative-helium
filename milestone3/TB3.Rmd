@@ -49,15 +49,6 @@ Remember that you should **always look at the output of your code** to make sure
 
 Also remember that names that contain non-standard characters, like dashes `-`, can be worked with by surrounding the name with backticks.
 
-Before
-
-```{r 1.1-error1}
-# ERROR HERE - 1
-(smoker_tidy <- smoker %>%
-  pivot_longer(c(yes, no), names_to = "gender", values_to = "count"))
-```
-
-After
 
 ```{r 1.1-error1}
 ## Error 1 fixed
@@ -72,19 +63,7 @@ Remember the `penguins` dataset? I want to explore the relationship between `fli
 
 Remdoneember that there can only be **one error** in a single code chunk.
 
-Before
 
-```{r 2.0-error2}
-# ERROR HERE - 2
-ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
-  geom_smooth() +
-  geom_point(method = "lm", se = TRUE) +
-  theme_minimal() +
-  labs(x = "Flipper Length (mm)",
-       y = "Body Mass (g)")
-```
-
-After
 
 ```{r 2.0-error2}
 # ERROR 2 fixed
@@ -106,15 +85,7 @@ ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
 
 With that said - time to work with some dates! I have stored Rosalind Franklin's birth date under the variable `rs`, and I would like to parse it using **the appropriate `lubridate` date function**, given the order in which I have stored it.
 
-Before
 
-```{r 3.1-error3}
-# ERROR HERE - 3
-rs <- "July 25, 1920"
-dym(rs) 
-```
-
-After
 ```{r 3.1-error3}
 # ERROR 3 fixed
 rs <- "July 25, 1920"
@@ -125,15 +96,7 @@ mdy(rs)
 
 Being able to parse dates is nice, but `lubridate` is also very useful when it comes to answering questions such as "How many seconds are in a day?" or "How long has it been since...?". For example, I want to calculate how many *hours* it has been since the first landing on the moon, until today.
 
-Before
 
-```{r 4.0-error4}
-# ERROR HERE - 4
-date_landing <- mdy("July 20, 1969")
-difftime(today(), date_landing, units = "days")
-```
-
-After
 
 ```{r 4.0-error4}
 # ERROR HERE - 4
@@ -145,14 +108,7 @@ difftime(today(), date_landing, units = "hours")
 
 Now, how many *days* will it have been since the landing on the moon, **in a week from now**?
 
-Before
 
-```{r 5.0-error5}
-# ERROR HERE - 5
-difftime(today(), date_landing + weeks(1), units = "days")
-```
-
-After
 ```{r 5.0-error5}
 # ERROR 5 FIXED
 date_landing <- mdy("July 20, 1969")
@@ -184,19 +140,7 @@ Now, I noticed that the levels for the factor `Species` could be simplified. The
 + "Chinstrap penguin (Pygoscelis antarctica)" to "Chinstrap"
 + "Gentoo penguin (Pygoscelis papua)" to "Gentoo"
 
-Before
-```{r 6.2-error6}
-# ERROR HERE - 6
-penguins_new <-
-  penguins_new %>%
-  mutate(Species = rename(Species,
-                          "Adelie Penguin (Pygoscelis adeliae)" = "Adelie",
-                          "Chinstrap penguin (Pygoscelis antarctica)" = "Chinstrap",
-                          "Gentoo penguin (Pygoscelis papua)" = "Gentoo"))
-levels(penguins_new$Species) # check output
-```
 
-After
 ```{r 6.2-error6}
 # ERROR 6 FIXED
 penguins_new <-
@@ -220,17 +164,7 @@ penguins_new <-
 
 Say I want to create a subset of the `penguins_new` dataset, that *only* contains data for **female** penguins from the **Adelie** and **Gentoo** species. Save this subset into `penguins_subset` and ensure that you *drop all unused levels* from this new subset. Remember to *check the output* to ensure that the code is doing what you expect it to do!
 
-Before
 
-```{r 7.1-error7}
-# ERROR HERE - 7
-penguins_subset <-
-  penguins_new %>%
-  filter(Species %in% c("Adelie", "Gentoo") & Sex == "FEMALE") %>%
-  drop_na() 
-```
-
-After
 
 ```{r 7.1-error7}
 # ERROR 7 FIXED
@@ -267,13 +201,7 @@ distributors <- tibble::tribble(
 
 Join `movie` and `distributor` so that all rows in `movie` where there are no matching values in `distributor` are kept.
 
-Before
-```{r 8.1-error8}
-# ERROR HERE - 8
-right_join(movies, distributors) 
-```
 
-After
 ```{r 8.1-error8}
 # ERROR 8 FIXED
 anti_join(movies, distributors) 
@@ -283,14 +211,7 @@ anti_join(movies, distributors)
 
 Join `movies` and `distributors` so that all rows from `distributors` and all columns from `movies` and `distributors` are kept.
 
-Before
 
-```{r 9.0-error9}
-# ERROR HERE - 9
-left_join(movies, distributors)
-```
-
-After
 ```{r 9.0-error9}
 # ERROR 9 FIXED
 right_join(movies, distributors)
@@ -300,13 +221,7 @@ right_join(movies, distributors)
 
 Join `movies` and `distributors` so that all rows and all columns from both datasets are present.
 
-Before
-```{r 10.0-error10}
-# ERROR HERE - 10
-inner_join(movies, distributors)
-```
 
-After
 ```{r 10.0-error10}
 # ERROR 10 FIXED
 inner_join(movies, distributors)
